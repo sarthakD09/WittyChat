@@ -2,6 +2,57 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: 'JetBrains Mono', Arial, sans-serif;
+}
+body{
+background: url("bg4.jpg") no-repeat center center fixed;
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+width: 100vw;
+color: white;
+}
+
+.container {
+  background: linear-gradient(15deg,rgba(255,255,255,0.1),rgba(0, 0, 0, 0.475)); /* semi-transparent white */
+  -webkit-backdrop-filter: blur(10px); /* for Safari */
+  backdrop-filter: blur(8px);
+  border-radius: 7px;
+  border:1px solid rgba(255, 255, 255,0.18);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+  height: 90vh;
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  position: relative; /* Remove if not needed */
+}
+.loading{
+  padding: 50px;
+  font-size: 36px;
+  border-radius: 10px;
+  background-color: rgba(17,25,40,0.9);
+}
+.details-panel {
+  position: relative;
+  width: 350px;
+  min-width: 300px;
+  max-width: 400px;
+  height: 100%;
+  background: rgba(30, 30, 40, 0.98);
+  box-shadow: -4px 0 24px 0 rgba(0,0,0,0.15);
+  z-index: 1;
+  transform: translateX(0%);
+  opacity: 1;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), opacity 0.35s cubic-bezier(.4,0,.2,1);
+  will-change: transform, opacity;
+}
+
+/* For smooth hide, use a class when hiding */
+.details-panel.hide {
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
 }

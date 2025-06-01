@@ -1,0 +1,240 @@
+.chatList {
+  flex: 1;
+  overflow: auto;   /* Better UX and Safari support */
+  height: 100%;
+  min-height: 0;
+  animation: fadeIn 0.75s;
+}
+
+.chatList .search {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+}
+
+.chatList .searchBar {
+  display: flex;
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.383);
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Standard */
+.chatList .searchBar input::placeholder {
+  color: #DCD7C9; /* Change to your desired color */
+  opacity: 1;   /* Ensure full opacity */
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+.chatList .searchBar input::-webkit-input-placeholder {
+  color: #DCD7C9;
+}
+
+/* For Firefox */
+.chatList .searchBar input::-moz-placeholder {
+  color: #DCD7C9;
+}
+
+/* For IE/Edge */
+.chatList .searchBar input:-ms-input-placeholder {
+  color: #DCD7C9;
+}
+
+/* For older Firefox */
+.chatList .searchBar input::-ms-input-placeholder {
+  color: #DCD7C9;
+}
+
+.chatList .searchBar input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  display: flex;
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: white; /* Ensures input text is white in Safari */
+
+}
+
+.chatList .searchBar img {
+  height: 20px;
+  width: 20px;
+}
+
+.chatList .add {
+  height: 36px;
+  width: 36px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  box-shadow: none; /* Remove glow */
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  animation: wiggle 1.2s ease-in-out infinite;
+
+}
+
+.chatList .add img {
+  z-index: 1;
+  position: relative;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0);}
+  20% { transform: rotate(-10deg);}
+  40% { transform: rotate(8deg);}
+  60% { transform: rotate(-6deg);}
+  80% { transform: rotate(4deg);}
+}
+.chatList .add::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent 40%, #5183fe66 50%, transparent 60%);
+  transform: translateX(-100%) rotate(25deg);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s;
+  pointer-events: none;
+  z-index: 0; /* Make sure shine is behind the icon */
+}
+
+.chatList .add:active::after,
+.chatList .add:focus::after,
+.chatList .add:hover::after {
+  transform: translateX(100%) rotate(25deg);
+  opacity: 1;
+}
+
+.chatList .add::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(120deg, transparent 60%, #5183fe22 80%, transparent 100%);
+  opacity: 0.7;
+  pointer-events: none;
+  animation: colorSweep 2.5s linear infinite;
+  z-index: 0;
+}
+@keyframes colorSweep {
+  0% { transform: translateX(-100%);}
+  100% { transform: translateX(100%);}
+}
+
+.chatList .item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255,0.18);
+  overflow: auto;
+  animation: slideInLeft 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+  position: relative;
+}
+
+.chatList .item .spinner-space {
+  width: 24px; /* Reserve space for spinner */
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.chatList .item:hover {
+  background: rgba(81, 131, 254, 0.08);
+  box-shadow: 0 2px 12px 0 rgba(81,131,254,0.08);
+  transform: translateY(-2px) scale(1.02);
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.chatList .item img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-size: cover;
+  transition: box-shadow 0.2s, filter 0.2s;
+}
+
+.chatList .item:hover img {
+  box-shadow: 0 0 0 3px #5183fe44;
+  filter: brightness(1.08);
+}
+
+.chatList .item .texts {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatList .item .texts span {
+  font-weight: 500;
+}
+
+.chatList .item .texts p {
+  color: #DCD7C9;
+  font-size: 14px;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased; /* Improves font rendering in Safari */
+  /* font-smooth removed, not supported in Safari */
+}
+
+.chatList.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  animation: fadeOut 0.5s;
+}
+.spinner {
+  border: 4px solid #eee;
+  border-top: 4px solid #5183fe;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+.item.loading {
+  opacity: 0.7;
+  pointer-events: none;
+  position: relative;
+}
+
+.mini-spinner {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 3px solid #eee;
+  border-top: 3px solid #5183fe;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  animation: spin 0.8s linear infinite;
+}

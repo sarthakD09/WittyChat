@@ -1,0 +1,102 @@
+.login{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+  animation: fadeSlideUp 0.8s cubic-bezier(.4,0,.2,1);
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(40px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+.login .item{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.login .item form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    input{
+        padding: 20px;
+        border: none;
+        outline: none;
+        background-color: rgba(17, 25, 40, 0.6);
+        color: white;
+        border-radius: 5px;
+        :focus {
+            outline: none;
+            box-shadow: 0 0 8px #5183fe;
+            border-color: #5183fe;
+            transition: box-shadow 0.3s, border-color 0.3s;
+            }
+    }
+    label{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        text-decoration: underline;
+        img{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+    }
+    button{
+        border: none;
+        width: 50%;
+        outline: none;
+        padding: 10px;
+        background-color: #006aff9a;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        font-weight: 500;
+
+        &:hover{
+            background-color: #006aff;
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(81,131,254,0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        &:disabled{
+            cursor: not-allowed;
+            background-color: #1f8ff19c;
+        }
+    }
+}
+.login .separator{
+    height: 80%;
+    width: 2px;
+    background-color: #8c8b8b99;
+    margin: 0;
+    padding: 0;
+    
+}
+.login h1 {
+  opacity: 0;
+  animation: fadeInText 1s 0.3s forwards;
+}
+@keyframes fadeInText {
+  to { opacity: 1; }
+}
+.login input, .login button {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: staggerFadeIn 0.5s forwards;
+}
+.login input:nth-child(1) { animation-delay: 0.2s; }
+.login input:nth-child(2) { animation-delay: 0.4s; }
+.login button { animation-delay: 0.6s; }
+@keyframes staggerFadeIn {
+  to { opacity: 1; transform: translateY(0);}
+}

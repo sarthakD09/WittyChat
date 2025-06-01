@@ -1,0 +1,203 @@
+.chat{
+    display: flex;
+    flex:2;
+    border-left: 1px solid rgba(255, 255, 255,0.18);
+    border-right: 1px solid rgba(255, 255, 255,0.18);
+    height: 100%;
+    flex-direction: column;
+    min-height: 0; /* Add this */
+
+}
+.chat .top {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom:1px solid rgba(255, 255, 255,0.18);
+    flex-shrink: 0;
+    /* Remove height: 100% */
+
+}
+.chat .top .user{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+}
+.chat .top .user img{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+.chat .top .user .texts{
+    gap: 5px;
+    flex-direction: column;
+    display: flex;
+}
+
+.chat .top .user .texts span{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.chat .top .user .texts p{
+    font-weight: 300;
+    font-size: 14px;
+    color: #DCD7C9;
+}
+
+.chat .top .icons{
+    display: flex;
+    gap: 20px;
+}
+.chat .top .icons img{
+    height: 20px;
+    width: 20px;
+}
+.chat .center{
+    padding: 20px;
+    flex: 1;
+    overflow:scroll; /* Change from scroll to auto */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 0;
+}
+
+.chat .center .message{
+    display: flex;
+    min-width: 70%;
+    gap: 20px;
+    align-self: start;
+    align-items: flex-start;
+    &.own{
+        align-self: flex-end;
+        .texts{
+            p{background-color: #2C3639;}
+            align-items: flex-end;
+        }
+    }
+    img{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .texts{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        img{
+            width: 220px;         /* or 100%, or a max-width */
+            max-width: 320px;     /* prevents it from being too wide */
+            height: auto;         /* keeps aspect ratio */
+            max-height: 300px;    /* prevents it from being too tall */
+            border-radius: 10px;
+            object-fit: cover;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: #222;     /* fallback bg for transparent images */
+            display: block;
+        }
+        p{
+            padding: 20px;
+            background-color: #3f4e4fbf;
+            border-radius: 10px;
+            width: fit-content;
+        }
+        span{
+            font-size: 13px;
+        }
+        
+    }
+}
+
+
+.chat .bottom{
+    gap: 20px;
+    padding: 20px;
+    /* Add these */
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255,0.18);
+    flex-shrink: 0;
+}
+.chat .bottom .icons{
+    display: flex;
+    gap: 20px;
+}
+.chat .bottom img{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+
+}
+.chat .bottom input{
+    flex:1;
+    background-color: rgba(0, 0, 0, 0.383);
+    border: none;
+    outline: none;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    &:disabled{
+        cursor: not-allowed; 
+    }
+}
+
+/* Fix placeholder selector */
+.chat .bottom input::placeholder {
+    color: #DCD7C9;
+}
+.chat .bottom button{
+    background-color: #3F4E4F;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover{
+        background-color: #2C3639;
+    }
+    &:disabled{
+        background-color: rgba(174, 43, 43, 0.412);
+        cursor: not-allowed; 
+    }
+}
+.chat .bottom .emoji{
+    position: relative;
+}
+
+.chat .bottom .emoji .picker{
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+
+}
+.chat-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  animation: fadeIn 0.4s;
+}
+.spinner {
+  border: 4px solid #eee;
+  border-top: 4px solid #5183fe;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
